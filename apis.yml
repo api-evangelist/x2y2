@@ -1,0 +1,90 @@
+name: X2Y2
+description: X2Y2 is an NFT marketplace and trading platform on Ethereum offering
+  REST APIs for querying listings, offers, sales history, collection statistics, and
+  executing NFT trades. It provides one of the lowest marketplace fees in the industry
+  at 0.5% and includes an NFT-backed lending (Fi) API suite alongside its core marketplace
+  API.
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-06-14'
+specificationVersion: '0.19'
+tags:
+  - NFT
+  - Ethereum
+  - Marketplace
+  - Blockchain
+  - Web3
+  - Collectibles
+  - Trading
+apis:
+  - name: X2Y2 OpenAPI
+    description: REST API for querying and managing NFT orders, offers, marketplace
+      events, and collection statistics on the X2Y2 Ethereum marketplace.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.x2y2.io/developers/api
+    baseURL: https://api.x2y2.org
+    tags:
+      - NFT
+      - Orders
+      - Offers
+      - Events
+      - Collections
+      - Ethereum
+    properties:
+      - type: Documentation
+        url: https://docs.x2y2.io/developers/api
+      - type: OpenAPI
+        url: https://x2y2.readme.io/reference/introduction
+      - type: Plans
+        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+      - type: RateLimits
+        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+      - type: FinOps
+        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
+    contact:
+      - FN: X2Y2 Developer Hub
+        url: https://docs.x2y2.io/developers/api
+  - name: X2Y2 Fi API
+    description: REST API for NFT-backed lending operations on X2Y2, including loan
+      creation, repayment, refinancing, and offer management for the X2Y2 Fi lending
+      protocol.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.x2y2.io/developers/api
+    baseURL: https://api.x2y2.org
+    tags:
+      - NFT
+      - Lending
+      - DeFi
+      - Loans
+      - Finance
+      - Ethereum
+    properties:
+      - type: Documentation
+        url: https://docs.x2y2.io/developers/api
+      - type: OpenAPI
+        url: https://x2y2.readme.io/reference/introduction
+      - type: Plans
+        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+      - type: RateLimits
+        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+      - type: FinOps
+        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
+    contact:
+      - FN: X2Y2 Developer Hub
+        url: https://docs.x2y2.io/developers/api
+common:
+  - type: GitHub
+    url: https://github.com/X2Y2-io
+  - type: SDK
+    url: https://github.com/X2Y2-io/x2y2-sdk
+  - type: npm
+    url: https://www.npmjs.com/package/@x2y2-io/sdk
+  - type: Documentation
+    url: https://docs.x2y2.io/developers/api
+  - type: APIReference
+    url: https://x2y2.readme.io/reference/introduction
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
+    email: info@apievangelist.com
