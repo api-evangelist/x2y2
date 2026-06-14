@@ -1,0 +1,229 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "X2Y2 OpenAPI",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {"url": "https://api.x2y2.org/"},
+    {"url": "https://goerli-api.x2y2.org/"}
+  ],
+  "components": {
+    "schemas": {
+      "TokenLite": {
+        "type": "object",
+        "properties": {
+          "contract": {"type": "string", "default": "0xef1a89cbfabe59397ffda11fc5df293e9bc5db90", "nullable": false},
+          "token_id": {"type": "integer", "default": 1, "nullable": false},
+          "erc_type": {"type": "string", "default": "erc721", "enum": ["erc721", "erc1155"], "nullable": false}
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "integer", "default": 1},
+          "item_hash": {"type": "string", "default": "0x41a2753400f805db148079f60355df470aece45941a45cb96a25ab5d24e4c243"},
+          "maker": {"type": "string", "default": "0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434"},
+          "taker": {"type": "string", "default": null},
+          "token": {"$ref": "#/components/schemas/TokenLite"},
+          "price": {"type": "string", "default": "48700000000000000"},
+          "currency": {"type": "string", "default": "0x0000000000000000000000000000000000000000"},
+          "type": {"type": "string", "default": "sell"},
+          "is_collection_offer": {"type": "string", "default": false},
+          "royalty_fee": {"type": "integer", "default": 0, "description": "Base rate is 10^6. For example, 50000 means 5%"},
+          "created_at": {"type": "string", "default": 1654983000},
+          "end_at": {"type": "string", "default": 1654999000}
+        },
+        "required": ["type"]
+      },
+      "OrderResponse": {
+        "type": "object",
+        "properties": {
+          "success": {"type": "boolean", "default": true},
+          "next": {"type": "string", "default": null},
+          "data": {"type": "array", "items": {"$ref": "#/components/schemas/Order"}}
+        },
+        "required": ["success"]
+      },
+      "Event": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "integer", "default": 1},
+          "from_address": {"type": "string", "default": "0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434"},
+          "to_address": {"type": "string", "default": "0x6c6fa394709ed4c9c593344350c99dfcd1cae364"},
+          "token": {"$ref": "#/components/schemas/TokenLite"},
+          "order": {"$ref": "#/components/schemas/Order"},
+          "tx": {"type": "string", "default": null},
+          "type": {"type": "string", "default": "offer_listing"},
+          "created_at": {"type": "string", "default": 1654983000}
+        }
+      },
+      "EventResponse": {
+        "type": "object",
+        "properties": {
+          "success": {"type": "boolean", "default": true},
+          "next": {"type": "string", "default": null},
+          "data": {"type": "array", "items": {"$ref": "#/components/schemas/Event"}}
+        },
+        "required": ["success"]
+      },
+      "ContractV1": {
+        "type": "object",
+        "properties": {
+          "contract": {"type": "string", "default": "0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e", "nullable": false},
+          "erc_type": {"type": "integer", "default": 0, "nullable": false},
+          "name": {"type": "string", "default": "Doodle", "nullable": false},
+          "symbol": {"type": "string", "default": "DOODLE", "nullable": false},
+          "royalty_fee": {"type": "integer", "default": 0, "description": "Base rate is 10^6. For example, 50000 means 5%", "nullable": false},
+          "slug": {"type": "string", "default": "doodles-official", "nullable": true},
+          "verified": {"type": "boolean", "default": true, "nullable": false},
+          "suspicious": {"type": "boolean", "default": false, "nullable": false},
+          "nsfw": {"type": "boolean", "default": false, "nullable": false}
+        }
+      },
+      "OpenAPIContractResponse": {
+        "type": "object",
+        "properties": {
+          "success": {"type": "boolean", "default": true},
+          "next": {"type": "string", "default": null},
+          "data": {"$ref": "#/components/schemas/ContractV1"}
+        },
+        "required": ["success"]
+      },
+      "ContractStats": {
+        "type": "object",
+        "properties": {
+          "floor_price": {"type": "string", "default": "48700000000000000"}
+        }
+      },
+      "ContractStatsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {"type": "boolean", "default": true},
+          "next": {"type": "string", "default": null},
+          "data": {"$ref": "#/components/schemas/ContractStats"}
+        },
+        "required": ["success"]
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    }
+  },
+  "paths": {
+    "/v1/orders": {
+      "get": {
+        "summary": "Fetch open orders",
+        "operationId": "get-v1-orders",
+        "security": [{"ApiKeyAuth": []}],
+        "tags": ["Orders"],
+        "parameters": [
+          {"in": "query", "name": "maker", "description": "Filter by the order maker's wallet address", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "contract", "description": "Filter by contract address", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "token_id", "description": "Filter by the token ID of contract. Needs to be sent together with `contract`.", "schema": {"type": "integer"}, "required": false},
+          {"in": "query", "name": "created_before", "description": "Filter orders listed before this timestamp.", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "created_after", "description": "Filter orders listed after this timestamp.", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "cursor", "description": "A cursor to be supplied as a query param to retrieve the next page.", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "sort", "description": "The property to sort the results by.", "schema": {"type": "string", "enum": ["created_at", "price"]}, "required": false},
+          {"in": "query", "name": "limit", "description": "Number of orders to return (capped at 50).", "schema": {"type": "integer"}, "required": false},
+          {"in": "query", "name": "direction", "description": "The order to sort by.", "schema": {"type": "string", "enum": ["asc", "desc"]}, "required": false}
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OrderResponse"}}}
+          }
+        }
+      }
+    },
+    "/v1/events": {
+      "get": {
+        "summary": "Fetch events",
+        "operationId": "get-v1-events",
+        "security": [{"ApiKeyAuth": []}],
+        "tags": ["Events"],
+        "parameters": [
+          {"in": "query", "name": "from_address", "description": "Filter by event from address", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "to_address", "description": "Filter by event to address", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "type", "description": "Filter by the event type", "schema": {"type": "string", "enum": ["list", "sale", "cancel_listing"]}, "required": true},
+          {"in": "query", "name": "contract", "description": "Filter by contract address", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "token_id", "description": "Filter by the token ID of contract. Needs to be sent together with `contract`.", "schema": {"type": "integer"}, "required": false},
+          {"in": "query", "name": "created_before", "description": "Filter orders listed before this timestamp.", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "created_after", "description": "Filter orders listed after this timestamp.", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "limit", "description": "Number of events to return (capped at 200).", "schema": {"type": "integer"}, "required": false},
+          {"in": "query", "name": "cursor", "description": "A cursor to be supplied as a query param to retrieve the next page.", "schema": {"type": "string"}, "required": false}
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/EventResponse"}}}
+          }
+        }
+      }
+    },
+    "/v1/offers": {
+      "get": {
+        "summary": "Fetch open offers",
+        "operationId": "get-v1-offers",
+        "security": [{"ApiKeyAuth": []}],
+        "tags": ["Offers"],
+        "parameters": [
+          {"in": "query", "name": "type", "description": "Type of offers to filter.", "schema": {"type": "string", "enum": ["collection", "nft", "all"]}, "required": false},
+          {"in": "query", "name": "maker", "description": "Filter by the offer maker's wallet address", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "contract", "description": "Filter by contract address. If `token_id` is not specified, only collection offers will be returned.", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "token_id", "description": "Filter by the token ID of contract. Needs to be sent together with `contract`. Collection offers will not be returned.", "schema": {"type": "integer"}, "required": false},
+          {"in": "query", "name": "created_before", "description": "Filter offers created before this timestamp.", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "created_after", "description": "Filter offers created after this timestamp.", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "cursor", "description": "A cursor to be supplied as a query param to retrieve the next page.", "schema": {"type": "string"}, "required": false},
+          {"in": "query", "name": "sort", "description": "The property to sort the results by.", "schema": {"type": "string", "enum": ["created_at", "price"]}, "required": false},
+          {"in": "query", "name": "limit", "description": "Number of orders to return (capped at 50).", "schema": {"type": "integer"}, "required": false},
+          {"in": "query", "name": "direction", "description": "The order to sort by.", "schema": {"type": "string", "enum": ["asc", "desc"]}, "required": false}
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OrderResponse"}}}
+          }
+        }
+      }
+    },
+    "/v1/contracts/{contract}": {
+      "get": {
+        "summary": "Fetch contract",
+        "operationId": "get-v1-contracts-contract",
+        "security": [{"ApiKeyAuth": []}],
+        "tags": ["Contracts"],
+        "parameters": [
+          {"in": "path", "name": "contract", "description": "Filter by contract address", "schema": {"type": "string"}, "required": true}
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenAPIContractResponse"}}}
+          }
+        }
+      }
+    },
+    "/v1/contracts/{contract}/stats": {
+      "get": {
+        "summary": "Fetch contract stats",
+        "operationId": "get-v1-contracts-contract-stats",
+        "security": [{"ApiKeyAuth": []}],
+        "tags": ["Contracts"],
+        "parameters": [
+          {"in": "path", "name": "contract", "description": "Filter by contract address", "schema": {"type": "string"}, "required": true}
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ContractStatsResponse"}}}
+          }
+        }
+      }
+    }
+  }
+}

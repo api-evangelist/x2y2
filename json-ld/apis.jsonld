@@ -1,0 +1,53 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "api": "https://schema.org/WebAPI",
+    "x2y2": "https://x2y2.io/"
+  },
+  "@type": "WebAPI",
+  "name": "X2Y2",
+  "description": "X2Y2 is an NFT marketplace and trading platform on Ethereum offering REST APIs for querying listings, offers, sales history, collection statistics, and executing NFT trades. It provides one of the lowest marketplace fees in the industry at 0.5% and includes an NFT-backed lending (Fi) API suite alongside its core marketplace API.",
+  "url": "https://docs.x2y2.io/developers/api",
+  "termsOfService": "https://x2y2.io/",
+  "provider": {
+    "@type": "Organization",
+    "name": "X2Y2",
+    "url": "https://x2y2.io/",
+    "sameAs": [
+      "https://github.com/X2Y2-io",
+      "https://www.npmjs.com/package/@x2y2-io/sdk"
+    ]
+  },
+  "documentation": "https://docs.x2y2.io/developers/api",
+  "availableChannel": [
+    {
+      "@type": "ServiceChannel",
+      "name": "X2Y2 OpenAPI",
+      "description": "REST API for querying and managing NFT orders, offers, marketplace events, and collection statistics on the X2Y2 Ethereum marketplace.",
+      "serviceUrl": "https://api.x2y2.org/"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "X2Y2 Fi API",
+      "description": "REST API for NFT-backed lending operations on X2Y2, including loan creation, repayment, refinancing, and offer management.",
+      "serviceUrl": "https://loan-api.x2y2.org/"
+    }
+  ],
+  "keywords": [
+    "NFT",
+    "Ethereum",
+    "Marketplace",
+    "Blockchain",
+    "Web3",
+    "Collectibles",
+    "Trading",
+    "DeFi",
+    "Lending"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "description": "X2Y2 charges 0.5% marketplace fee, one of the lowest in the NFT industry."
+  },
+  "softwareVersion": "1.0.0",
+  "license": "https://x2y2.io/"
+}

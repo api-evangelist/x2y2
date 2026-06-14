@@ -1,0 +1,331 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "X2Y2 Post APIs",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.x2y2.org/api"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {
+    "/orders/add": {
+      "post": {
+        "summary": "Create open order",
+        "description": "Create a new open order, including new listings, price changes, and collection offers.",
+        "operationId": "create-open-order",
+        "tags": ["Orders"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "order",
+                  "isBundle",
+                  "orderIds",
+                  "changePrice",
+                  "isCollection"
+                ],
+                "properties": {
+                  "order": {
+                    "type": "string",
+                    "description": "An order payload that contains the order info."
+                  },
+                  "isBundle": {
+                    "type": "boolean",
+                    "description": "Must be false.",
+                    "default": false
+                  },
+                  "orderIds": {
+                    "type": "array",
+                    "description": "Empty array for new listing. OrderId of the current order when changing its price.",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "changePrice": {
+                    "type": "boolean",
+                    "description": "Set to true only when changing the price of an existing listing.",
+                    "default": false
+                  },
+                  "isCollection": {
+                    "type": "boolean",
+                    "description": "Set to true only when creating a new collection offer.",
+                    "default": false
+                  },
+                  "isPrivate": {
+                    "type": "boolean",
+                    "description": "Set to true to create a private listing. Must be used together with `taker`.",
+                    "default": false
+                  },
+                  "taker": {
+                    "type": "string",
+                    "description": "Must be used with isPrivate: true. Specifies who could buy the private listing.",
+                    "default": "null"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Order created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/sign": {
+      "post": {
+        "summary": "Fetch order purchase input",
+        "description": "Get the input to be submitted via user's wallet to purchase or accept an offer.",
+        "operationId": "sign-order-info",
+        "tags": ["Orders"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "caller",
+                  "op",
+                  "amountToEth",
+                  "amountToWeth",
+                  "items"
+                ],
+                "properties": {
+                  "caller": {
+                    "type": "string",
+                    "description": "Caller's address."
+                  },
+                  "op": {
+                    "type": "integer",
+                    "description": "1 for purchase a listing, 2 for accept an offer.",
+                    "default": 1,
+                    "format": "int32"
+                  },
+                  "amountToEth": {
+                    "type": "string",
+                    "description": "Must be '0'.",
+                    "default": "0"
+                  },
+                  "amountToWeth": {
+                    "type": "string",
+                    "description": "Must be '0'.",
+                    "default": "0"
+                  },
+                  "items": {
+                    "type": "array",
+                    "description": "Info of the orders to be purchased.",
+                    "items": {
+                      "type": "object",
+                      "required": ["orderId", "currency", "price"],
+                      "properties": {
+                        "orderId": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "currency": {
+                          "type": "string"
+                        },
+                        "price": {
+                          "type": "string"
+                        },
+                        "tokenId": {
+                          "type": "string",
+                          "description": "Required when accepting collection offer."
+                        }
+                      }
+                    }
+                  },
+                  "check": {
+                    "type": "boolean",
+                    "description": "Whether to check if owners of items are approved for x2y2 contract.",
+                    "default": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Purchase input returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "order_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "input": {
+                            "type": "string",
+                            "example": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/cancel": {
+      "post": {
+        "summary": "Fetch order cancel input",
+        "description": "Get the input to be submitted via user's wallet to cancel orders on chain.",
+        "operationId": "sign-cancel-order",
+        "tags": ["Orders"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "caller",
+                  "op",
+                  "items",
+                  "sign_message",
+                  "sign"
+                ],
+                "properties": {
+                  "caller": {
+                    "type": "string",
+                    "description": "Order maker's address."
+                  },
+                  "op": {
+                    "type": "integer",
+                    "description": "Must be 3 to cancel any order.",
+                    "default": 3,
+                    "format": "int32"
+                  },
+                  "items": {
+                    "type": "array",
+                    "description": "Id of orders to cancel.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "orderId": {
+                          "type": "integer",
+                          "format": "int32"
+                        }
+                      }
+                    }
+                  },
+                  "sign_message": {
+                    "type": "string",
+                    "description": "A random string generated by ethers.utils.keccak256()."
+                  },
+                  "sign": {
+                    "type": "string",
+                    "description": "Signed by user's wallet, from `[signMessage, userAddress]`."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cancel input returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "order_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "input": {
+                            "type": "string",
+                            "example": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
