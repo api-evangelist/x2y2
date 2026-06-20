@@ -4,7 +4,7 @@ description: X2Y2 is an NFT marketplace and trading platform on Ethereum offerin
   executing NFT trades. It provides one of the lowest marketplace fees in the industry
   at 0.5% and includes an NFT-backed lending (Fi) API suite alongside its core marketplace
   API.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-06-14'
@@ -21,7 +21,7 @@ apis:
   - name: X2Y2 OpenAPI
     description: REST API for querying and managing NFT orders, offers, marketplace
       events, and collection statistics on the X2Y2 Ethereum marketplace.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.x2y2.io/developers/api
     baseURL: https://api.x2y2.org
     tags:
@@ -49,7 +49,7 @@ apis:
     description: REST API for NFT-backed lending operations on X2Y2, including loan
       creation, repayment, refinancing, and offer management for the X2Y2 Fi lending
       protocol.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.x2y2.io/developers/api
     baseURL: https://api.x2y2.org
     tags:
