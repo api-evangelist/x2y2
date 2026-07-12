@@ -74,6 +74,10 @@ apis:
       - FN: X2Y2 Developer Hub
         url: https://docs.x2y2.io/developers/api
 common:
+  - type: DomainSecurity
+    url: security/x2y2-domain-security.yml
+  - type: Authentication
+    url: authentication/x2y2-authentication.yml
   - type: GitHub
     url: https://github.com/X2Y2-io
   - type: SDKs

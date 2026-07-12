@@ -1,0 +1,27 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/x2y2-fi-api.json, openapi/x2y2-openapi.json, openapi/x2y2-post-apis.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: sec0
+  type: apiKey
+  in: header
+  parameter: X-API-KEY
+  sources:
+  - openapi/x2y2-fi-api.json
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  sources:
+  - openapi/x2y2-openapi.json
+- name: sec0
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  sources:
+  - openapi/x2y2-post-apis.json
