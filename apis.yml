@@ -74,6 +74,8 @@ apis:
       - FN: X2Y2 Developer Hub
         url: https://docs.x2y2.io/developers/api
 common:
+  - type: AgenticAccess
+    url: agentic-access/x2y2-agentic-access.yml
   - type: DomainSecurity
     url: security/x2y2-domain-security.yml
   - type: Authentication
