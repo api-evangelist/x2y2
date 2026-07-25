@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: X2Y2 Fi Chain General API
+  version: '3.0'
+servers:
+- url: https://loan-api.x2y2.org/
+- url: https://goerli-loan-api.x2y2.org/
+security:
+- sec0: []
+tags:
+- name: General
+paths:
+  /v3/sys/loanParam:
+    get:
+      tags:
+      - General
+      summary: Get System Params
+      description: Retrieve system-level lending parameters including whitelisted collections, APR ranges, durations, token contracts, and fee settings.
+      operationId: system-option
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      whitelist:
+                        type: array
+                        items:
+                          type: string
+                        description: Contract addresses of collections in whitelist.
+                      aprRange:
+                        type: array
+                        items:
+                          type: integer
+                        description: The range of APR when making offers.
+                      duration:
+                        type: array
+                        items:
+                          type: integer
+                        description: The range of duration when making offers.
+                      tokenContract:
+                        type: array
+                        items:
+                          type: string
+                        description: The acceptable currencies of loan offers. Currently only wETH is acceptable.
+                      offerExpireRange:
+                        type: array
+                        items:
+                          type: integer
+                        description: The range of expirations since current timestamp when making offers.
+                      adminFee:
+                        type: integer
+                        description: Current platform fee rate.
+                      signatureExpireTime:
+                        type: integer
+                        description: The expire time for each signature.
+                      minimumAmount:
+                        type: integer
+                        description: The minimum amount of an offer.
+                      collections:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            nftAddress:
+                              type: string
+                            disableCollection:
+                              type: integer
+                              description: Is collection offer enabled for this collection.
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: X-API-KEY

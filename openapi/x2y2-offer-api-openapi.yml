@@ -1,0 +1,357 @@
+openapi: 3.1.0
+info:
+  title: X2Y2 Fi Chain Offer API
+  version: '3.0'
+servers:
+- url: https://loan-api.x2y2.org/
+- url: https://goerli-loan-api.x2y2.org/
+security:
+- sec0: []
+tags:
+- name: Offer
+paths:
+  /v3/offer/make:
+    post:
+      tags:
+      - Offer
+      summary: Make new offer
+      description: Make a new offer to either a single NFT or a whole collection.
+      operationId: offer-make
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - expiry
+              - lender
+              - amount
+              - repayment
+              - nftAddress
+              - tokenId
+              - duration
+              - erc20Address
+              - createTime
+              - signature
+              - itemType
+              - size
+              - counter
+              properties:
+                expiry:
+                  type: integer
+                  format: int32
+                  description: Expiration timestamp of the offer (second). Must be current timestamp + range in [900, 604800].
+                lender:
+                  type: string
+                  description: Lender's address.
+                amount:
+                  type: string
+                  description: The amount of ETH to lend (wei).
+                repayment:
+                  type: string
+                  description: Repayment (wei). The value is limited by its calculated APR (the APR must be between 1%~300%).
+                nftAddress:
+                  type: string
+                  description: Contract address of the NFT.
+                tokenId:
+                  type: string
+                  description: Token id of the NFT. When making a collection offer, set the field to '340282366920938463463374607431768211455'.
+                duration:
+                  type: integer
+                  format: int32
+                  description: Loan duration (second), allowed values are [86400, 259200, 604800, 1209600, 2592000, 5184000, 7776000].
+                erc20Address:
+                  type: string
+                  description: Loan currency address. Use wETH's contract address for now.
+                createTime:
+                  type: integer
+                  format: int32
+                  description: The current timestamp.
+                signature:
+                  type: string
+                  description: Offer signature.
+                itemType:
+                  type: string
+                  description: 'NFT type, 0: ERC-721, 1: ERC-1155.'
+                size:
+                  type: integer
+                  format: int32
+                  description: Offer size.
+                counter:
+                  type: string
+                  description: Get counter from '/v3/chain/getUserCounter'.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      offerId:
+                        type: string
+                      optType:
+                        type: string
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+  /v3/offer/list:
+    get:
+      tags:
+      - Offer
+      summary: Get offers
+      description: Get all offers that the NFT could be lent with, including both collection offers and NFT offers.
+      operationId: get-offer-list
+      parameters:
+      - name: offerType
+        in: query
+        description: 'Offer type: [null: all, 1: single, 2: collection, 3: sub collection]'
+        schema:
+          type: string
+      - name: nftAddress
+        in: query
+        description: Contract address of the NFT.
+        schema:
+          type: string
+        required: true
+      - name: tokenId
+        in: query
+        description: Token Id of the NFT.
+        schema:
+          type: string
+        required: true
+      - name: userAddress
+        in: query
+        description: Filter by offer maker's address.
+        schema:
+          type: string
+      - name: isSufficient
+        in: query
+        description: Returns all offers or just offers with sufficient balance in wallet.
+        schema:
+          type: string
+          enum:
+          - '0'
+          - '1'
+          default: '1'
+      - name: duration
+        in: query
+        description: Filter by duration.
+        schema:
+          type: integer
+          format: int32
+      - name: page
+        in: query
+        description: Page number.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: Page record number.
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      - name: sortField
+        in: query
+        description: Offer sort field.
+        schema:
+          type: string
+          enum:
+          - createTime
+          - amount
+          - repayment
+          - apr
+          default: createTime
+      - name: sortDirection
+        in: query
+        description: Sort direction.
+        schema:
+          type: string
+          enum:
+          - desc
+          - asc
+          default: desc
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      more_page:
+                        type: boolean
+                      total:
+                        type: integer
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            offerId:
+                              type: string
+                            offerType:
+                              type: integer
+                            tokenId:
+                              type: string
+                            nftAddress:
+                              type: string
+                            amount:
+                              type: string
+                            repayment:
+                              type: string
+                            apr:
+                              type: integer
+                            lender:
+                              type: string
+                            expireTime:
+                              type: integer
+                            duration:
+                              type: integer
+                            size:
+                              type: integer
+                            usedSize:
+                              type: integer
+                            counter:
+                              type: integer
+                            itemType:
+                              type: integer
+                            erc20Address:
+                              type: string
+                            status:
+                              type: integer
+                            createTime:
+                              type: integer
+                            nftName:
+                              type: string
+                            nftShortName:
+                              type: string
+                            isSufficient:
+                              type: integer
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+  /v3/offer/cancelAll:
+    post:
+      tags:
+      - Offer
+      summary: Cancel all my offers
+      description: Cancel user's all offers directly on server side. This is an off-chain cancel.
+      operationId: offercancelall
+      parameters:
+      - name: x-signature
+        in: header
+        schema:
+          type: string
+        required: true
+      - name: x-timestamp
+        in: header
+        schema:
+          type: string
+        required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - userAddress
+              properties:
+                userAddress:
+                  type: string
+                  description: User's address.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties: {}
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+  /v3/offer/cancel:
+    post:
+      tags:
+      - Offer
+      summary: Cancel offer
+      description: Cancel an offer. This is an off-chain cancel.
+      operationId: offercancel
+      parameters:
+      - name: x-signature
+        in: header
+        schema:
+          type: string
+        required: true
+      - name: x-timestamp
+        in: header
+        schema:
+          type: string
+        required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - userAddress
+              - offerId
+              properties:
+                userAddress:
+                  type: string
+                  description: User's address.
+                offerId:
+                  type: string
+                  description: Offer ID to cancel.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties: {}
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: X-API-KEY

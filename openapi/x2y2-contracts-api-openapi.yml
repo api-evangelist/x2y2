@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: X2Y2 Fi Chain Contracts API
+  version: '3.0'
+servers:
+- url: https://loan-api.x2y2.org/
+- url: https://goerli-loan-api.x2y2.org/
+security:
+- sec0: []
+tags:
+- name: Contracts
+paths:
+  /v1/contracts/{contract}:
+    get:
+      summary: Fetch contract
+      operationId: get-v1-contracts-contract
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Contracts
+      parameters:
+      - in: path
+        name: contract
+        description: Filter by contract address
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenAPIContractResponse'
+  /v1/contracts/{contract}/stats:
+    get:
+      summary: Fetch contract stats
+      operationId: get-v1-contracts-contract-stats
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Contracts
+      parameters:
+      - in: path
+        name: contract
+        description: Filter by contract address
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractStatsResponse'
+components:
+  schemas:
+    ContractV1:
+      type: object
+      properties:
+        contract:
+          type: string
+          default: '0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e'
+          nullable: false
+        erc_type:
+          type: integer
+          default: 0
+          nullable: false
+        name:
+          type: string
+          default: Doodle
+          nullable: false
+        symbol:
+          type: string
+          default: DOODLE
+          nullable: false
+        royalty_fee:
+          type: integer
+          default: 0
+          description: Base rate is 10^6. For example, 50000 means 5%
+          nullable: false
+        slug:
+          type: string
+          default: doodles-official
+          nullable: true
+        verified:
+          type: boolean
+          default: true
+          nullable: false
+        suspicious:
+          type: boolean
+          default: false
+          nullable: false
+        nsfw:
+          type: boolean
+          default: false
+          nullable: false
+    ContractStatsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          default: true
+        next:
+          type: string
+          default: null
+        data:
+          $ref: '#/components/schemas/ContractStats'
+      required:
+      - success
+    OpenAPIContractResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          default: true
+        next:
+          type: string
+          default: null
+        data:
+          $ref: '#/components/schemas/ContractV1'
+      required:
+      - success
+    ContractStats:
+      type: object
+      properties:
+        floor_price:
+          type: string
+          default: '48700000000000000'
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: X-API-KEY

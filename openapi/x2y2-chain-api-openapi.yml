@@ -1,0 +1,230 @@
+openapi: 3.1.0
+info:
+  title: X2Y2 Fi Chain API
+  version: '3.0'
+servers:
+- url: https://loan-api.x2y2.org/
+- url: https://goerli-loan-api.x2y2.org/
+security:
+- sec0: []
+tags:
+- name: Chain
+paths:
+  /v3/chain/getUserCounter:
+    get:
+      tags:
+      - Chain
+      summary: Get user counter
+      description: Get user counter from Fi v3 contract. Required when making offers.
+      operationId: chain-counter
+      parameters:
+      - name: address
+        in: query
+        description: User address of the lender.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      counter:
+                        type: integer
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+  /v3/tx/borrow:
+    post:
+      tags:
+      - Chain
+      summary: Get a loan
+      description: Get signature data to complete a loan transaction. If not approved, approve is required first.
+      operationId: chain-borrow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - borrowerAddress
+              - tokenId
+              - offerId
+              properties:
+                borrowerAddress:
+                  type: string
+                  description: Borrower's address.
+                tokenId:
+                  type: string
+                  description: Token id of the NFT.
+                offerId:
+                  type: string
+                  description: The id of the Offer selected by Borrower.
+                referral:
+                  type: integer
+                  format: int32
+                  description: Referral code.
+                lenderRefinanceSwitch:
+                  type: integer
+                  format: int32
+                  description: 'NFT Protection switch: [1: Open, 2: Close].'
+                isCheck:
+                  type: boolean
+                  description: 'Whether to do approval check. [Default: True]'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        description: Borrow
+                      txRequest:
+                        type: object
+                        properties:
+                          to:
+                            type: string
+                            description: X2FI loan contract address.
+                          data:
+                            type: string
+                            description: Transaction data.
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+  /v3/tx/repay:
+    post:
+      tags:
+      - Chain
+      summary: Repay a loan
+      description: Get signature data to complete a loan repayment transaction.
+      operationId: chain-repay
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - loanId
+              - userAddress
+              properties:
+                loanId:
+                  type: string
+                  description: Loan's id.
+                userAddress:
+                  type: string
+                  description: User's address.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        description: Repay
+                      txRequest:
+                        type: object
+                        properties:
+                          to:
+                            type: string
+                            description: X2FI loan contract address.
+                          data:
+                            type: string
+                            description: Transaction data.
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+  /v3/tx/refinance:
+    post:
+      tags:
+      - Chain
+      summary: Refinance a loan
+      description: Get signature data to complete a loan refinance transaction. If not approved, authorization is required first.
+      operationId: chain-refinance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - loanId
+              - offerId
+              - userAddress
+              properties:
+                loanId:
+                  type: string
+                  description: Loan's id.
+                offerId:
+                  type: string
+                  description: The id of the Offer selected by Borrower.
+                userAddress:
+                  type: string
+                  description: User's address.
+                referral:
+                  type: integer
+                  format: int32
+                  description: Referral code.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        description: BorrowerRefinance
+                      txRequest:
+                        type: object
+                        properties:
+                          to:
+                            type: string
+                            description: X2FI loan contract address.
+                          data:
+                            type: string
+                            description: Transaction data.
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: X-API-KEY

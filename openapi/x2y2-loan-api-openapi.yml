@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: X2Y2 Fi Chain Loan API
+  version: '3.0'
+servers:
+- url: https://loan-api.x2y2.org/
+- url: https://goerli-loan-api.x2y2.org/
+security:
+- sec0: []
+tags:
+- name: Loan
+paths:
+  /v3/order/list:
+    get:
+      tags:
+      - Loan
+      summary: Get loans list
+      description: Get the current loans lent by a wallet address.
+      operationId: ordercurrentlendloans
+      parameters:
+      - name: nftAddress
+        in: query
+        description: NFT contract address.
+        schema:
+          type: string
+      - name: tokenId
+        in: query
+        description: NFT tokenId.
+        schema:
+          type: string
+      - name: lender
+        in: query
+        description: Lender's address.
+        schema:
+          type: string
+      - name: borrower
+        in: query
+        description: Borrower's address.
+        schema:
+          type: string
+      - name: duration
+        in: query
+        description: Filter by duration.
+        schema:
+          type: integer
+          format: int32
+      - name: status
+        in: query
+        description: 'Order status: [''current'', ''history''].'
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Page number.
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: Page record number.
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      more_page:
+                        type: boolean
+                      total:
+                        type: integer
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            loanId:
+                              type: integer
+                            nftAddress:
+                              type: string
+                            tokenId:
+                              type: string
+                            borrower:
+                              type: string
+                            lender:
+                              type: string
+                            amount:
+                              type: string
+                            repayment:
+                              type: string
+                            apr:
+                              type: integer
+                            duration:
+                              type: integer
+                            createTime:
+                              type: integer
+                            dueTime:
+                              type: integer
+                            status:
+                              type: integer
+                            erc20Address:
+                              type: string
+                            repaidDate:
+                              type: integer
+                            claimDate:
+                              type: integer
+                            nftName:
+                              type: string
+                            nftShortName:
+                              type: string
+                  code:
+                    type: integer
+                  msg:
+                    type: string
+                  t:
+                    type: integer
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: X-API-KEY

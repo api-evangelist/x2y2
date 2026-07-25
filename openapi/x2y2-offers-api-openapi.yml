@@ -1,0 +1,179 @@
+openapi: 3.1.0
+info:
+  title: X2Y2 Fi Chain Offers API
+  version: '3.0'
+servers:
+- url: https://loan-api.x2y2.org/
+- url: https://goerli-loan-api.x2y2.org/
+security:
+- sec0: []
+tags:
+- name: Offers
+paths:
+  /v1/offers:
+    get:
+      summary: Fetch open offers
+      operationId: get-v1-offers
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Offers
+      parameters:
+      - in: query
+        name: type
+        description: Type of offers to filter.
+        schema:
+          type: string
+          enum:
+          - collection
+          - nft
+          - all
+        required: false
+      - in: query
+        name: maker
+        description: Filter by the offer maker's wallet address
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: contract
+        description: Filter by contract address. If `token_id` is not specified, only collection offers will be returned.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: token_id
+        description: Filter by the token ID of contract. Needs to be sent together with `contract`. Collection offers will not be returned.
+        schema:
+          type: integer
+        required: false
+      - in: query
+        name: created_before
+        description: Filter offers created before this timestamp.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: created_after
+        description: Filter offers created after this timestamp.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: cursor
+        description: A cursor to be supplied as a query param to retrieve the next page.
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: sort
+        description: The property to sort the results by.
+        schema:
+          type: string
+          enum:
+          - created_at
+          - price
+        required: false
+      - in: query
+        name: limit
+        description: Number of orders to return (capped at 50).
+        schema:
+          type: integer
+        required: false
+      - in: query
+        name: direction
+        description: The order to sort by.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+        required: false
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+components:
+  schemas:
+    TokenLite:
+      type: object
+      properties:
+        contract:
+          type: string
+          default: '0xef1a89cbfabe59397ffda11fc5df293e9bc5db90'
+          nullable: false
+        token_id:
+          type: integer
+          default: 1
+          nullable: false
+        erc_type:
+          type: string
+          default: erc721
+          enum:
+          - erc721
+          - erc1155
+          nullable: false
+    OrderResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          default: true
+        next:
+          type: string
+          default: null
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+      required:
+      - success
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          default: 1
+        item_hash:
+          type: string
+          default: '0x41a2753400f805db148079f60355df470aece45941a45cb96a25ab5d24e4c243'
+        maker:
+          type: string
+          default: '0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434'
+        taker:
+          type: string
+          default: null
+        token:
+          $ref: '#/components/schemas/TokenLite'
+        price:
+          type: string
+          default: '48700000000000000'
+        currency:
+          type: string
+          default: '0x0000000000000000000000000000000000000000'
+        type:
+          type: string
+          default: sell
+        is_collection_offer:
+          type: string
+          default: false
+        royalty_fee:
+          type: integer
+          default: 0
+          description: Base rate is 10^6. For example, 50000 means 5%
+        created_at:
+          type: string
+          default: 1654983000
+        end_at:
+          type: string
+          default: 1654999000
+      required:
+      - type
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: X-API-KEY
