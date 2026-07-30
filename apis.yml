@@ -4,7 +4,19 @@ description: X2Y2 is an NFT marketplace and trading platform on Ethereum offerin
   executing NFT trades. It provides one of the lowest marketplace fees in the industry
   at 0.5% and includes an NFT-backed lending (Fi) API suite alongside its core marketplace
   API.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/x2y2.png
 url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-06-14'
@@ -18,61 +30,158 @@ tags:
   - Collectibles
   - Trading
 apis:
-  - name: X2Y2 OpenAPI
-    description: REST API for querying and managing NFT orders, offers, marketplace
-      events, and collection statistics on the X2Y2 Ethereum marketplace.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.x2y2.io/developers/api
-    baseURL: https://api.x2y2.org
-    tags:
-      - NFT
-      - Orders
-      - Offers
-      - Events
-      - Collections
-      - Ethereum
-    properties:
-      - type: Documentation
-        url: https://docs.x2y2.io/developers/api
-      - type: OpenAPI
-        url: https://x2y2.readme.io/reference/introduction
-      - type: Plans
-        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
-      - type: RateLimits
-        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
-      - type: FinOps
-        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
-    contact:
-      - FN: X2Y2 Developer Hub
-        url: https://docs.x2y2.io/developers/api
-  - name: X2Y2 Fi API
-    description: REST API for NFT-backed lending operations on X2Y2, including loan
-      creation, repayment, refinancing, and offer management for the X2Y2 Fi lending
-      protocol.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.x2y2.io/developers/api
-    baseURL: https://api.x2y2.org
-    tags:
-      - NFT
-      - Lending
-      - DeFi
-      - Loans
-      - Finance
-      - Ethereum
-    properties:
-      - type: Documentation
-        url: https://docs.x2y2.io/developers/api
-      - type: OpenAPI
-        url: https://x2y2.readme.io/reference/introduction
-      - type: Plans
-        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
-      - type: RateLimits
-        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
-      - type: FinOps
-        url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
-    contact:
-      - FN: X2Y2 Developer Hub
-        url: https://docs.x2y2.io/developers/api
+- aid: x2y2:x2y2-chain-api
+  name: X2Y2 Chain API
+  description: The Chain API from X2Y2 — 4 operation(s) for chain.
+  humanURL: https://docs.x2y2.io/developers/api
+  baseURL: https://api.x2y2.org
+  tags:
+  - Chain
+  properties:
+  - type: OpenAPI
+    url: openapi/x2y2-chain-api-openapi.yml
+  - type: Documentation
+    url: https://docs.x2y2.io/developers/api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
+- aid: x2y2:x2y2-contracts-api
+  name: X2Y2 Contracts API
+  description: The Contracts API from X2Y2 — 2 operation(s) for contracts.
+  humanURL: https://docs.x2y2.io/developers/api
+  baseURL: https://api.x2y2.org
+  tags:
+  - Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/x2y2-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.x2y2.io/developers/api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
+- aid: x2y2:x2y2-events-api
+  name: X2Y2 Events API
+  description: The Events API from X2Y2 — 1 operation(s) for events.
+  humanURL: https://docs.x2y2.io/developers/api
+  baseURL: https://api.x2y2.org
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/x2y2-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.x2y2.io/developers/api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
+- aid: x2y2:x2y2-general-api
+  name: X2Y2 General API
+  description: The General API from X2Y2 — 1 operation(s) for general.
+  humanURL: https://docs.x2y2.io/developers/api
+  baseURL: https://api.x2y2.org
+  tags:
+  - General
+  properties:
+  - type: OpenAPI
+    url: openapi/x2y2-general-api-openapi.yml
+  - type: Documentation
+    url: https://docs.x2y2.io/developers/api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
+- aid: x2y2:x2y2-loan-api
+  name: X2Y2 Loan API
+  description: The Loan API from X2Y2 — 1 operation(s) for loan.
+  humanURL: https://docs.x2y2.io/developers/api
+  baseURL: https://api.x2y2.org
+  tags:
+  - Loan
+  properties:
+  - type: OpenAPI
+    url: openapi/x2y2-loan-api-openapi.yml
+  - type: Documentation
+    url: https://docs.x2y2.io/developers/api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
+- aid: x2y2:x2y2-offer-api
+  name: X2Y2 Offer API
+  description: The Offer API from X2Y2 — 4 operation(s) for offer.
+  humanURL: https://docs.x2y2.io/developers/api
+  baseURL: https://api.x2y2.org
+  tags:
+  - Offer
+  properties:
+  - type: OpenAPI
+    url: openapi/x2y2-offer-api-openapi.yml
+  - type: Documentation
+    url: https://docs.x2y2.io/developers/api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
+- aid: x2y2:x2y2-offers-api
+  name: X2Y2 Offers API
+  description: The Offers API from X2Y2 — 1 operation(s) for offers.
+  humanURL: https://docs.x2y2.io/developers/api
+  baseURL: https://api.x2y2.org
+  tags:
+  - Offers
+  properties:
+  - type: OpenAPI
+    url: openapi/x2y2-offers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.x2y2.io/developers/api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
+- aid: x2y2:x2y2-orders-api
+  name: X2Y2 Orders API
+  description: The Orders API from X2Y2 — 4 operation(s) for orders.
+  humanURL: https://docs.x2y2.io/developers/api
+  baseURL: https://api.x2y2.org
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/x2y2-orders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.x2y2.io/developers/api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
 common:
   - type: AgenticAccess
     url: agentic-access/x2y2-agentic-access.yml
