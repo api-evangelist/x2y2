@@ -1,0 +1,28 @@
+{
+  "provider": "x2y2",
+  "sources": [
+    "x2y2-chain-api-openapi.yml",
+    "x2y2-contracts-api-openapi.yml",
+    "x2y2-events-api-openapi.yml",
+    "x2y2-general-api-openapi.yml",
+    "x2y2-loan-api-openapi.yml",
+    "x2y2-offer-api-openapi.yml",
+    "x2y2-offers-api-openapi.yml",
+    "x2y2-orders-api-openapi.yml"
+  ],
+  "outputs": [
+    "x2y2-chain-api-openapi.yml",
+    "x2y2-contracts-api-openapi.yml",
+    "x2y2-events-api-openapi.yml",
+    "x2y2-general-api-openapi.yml",
+    "x2y2-loan-api-openapi.yml",
+    "x2y2-offer-api-openapi.yml",
+    "x2y2-offers-api-openapi.yml",
+    "x2y2-orders-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
