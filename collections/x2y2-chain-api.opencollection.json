@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "X2Y2 Fi Chain API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user counter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://loan-api.x2y2.org/v3/chain/getUserCounter",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "User address of the lender."
+              }
+            ]
+          },
+          "docs": "Get user counter from Fi v3 contract. Required when making offers."
+        },
+        {
+          "info": {
+            "name": "Get a loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://loan-api.x2y2.org/v3/tx/borrow",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get signature data to complete a loan transaction. If not approved, approve is required first."
+        },
+        {
+          "info": {
+            "name": "Repay a loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://loan-api.x2y2.org/v3/tx/repay",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get signature data to complete a loan repayment transaction."
+        },
+        {
+          "info": {
+            "name": "Refinance a loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://loan-api.x2y2.org/v3/tx/refinance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get signature data to complete a loan refinance transaction. If not approved, authorization is required first."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

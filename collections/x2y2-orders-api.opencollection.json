@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "X2Y2 Fi Chain Orders API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch open orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://loan-api.x2y2.org/v1/orders",
+            "params": [
+              {
+                "name": "maker",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the order maker's wallet address"
+              },
+              {
+                "name": "contract",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contract address"
+              },
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the token ID of contract. Needs to be sent together with `contract`."
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders listed before this timestamp."
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders listed after this timestamp."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A cursor to be supplied as a query param to retrieve the next page."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The property to sort the results by."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of orders to return (capped at 50)."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The order to sort by."
+              }
+            ]
+          },
+          "docs": "Fetch open orders"
+        },
+        {
+          "info": {
+            "name": "Create open order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://loan-api.x2y2.org/orders/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new open order, including new listings, price changes, and collection offers."
+        },
+        {
+          "info": {
+            "name": "Fetch order purchase input",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://loan-api.x2y2.org/orders/sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the input to be submitted via user's wallet to purchase or accept an offer."
+        },
+        {
+          "info": {
+            "name": "Fetch order cancel input",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://loan-api.x2y2.org/orders/cancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the input to be submitted via user's wallet to cancel orders on chain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

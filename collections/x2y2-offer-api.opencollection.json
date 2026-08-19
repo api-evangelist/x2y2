@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "X2Y2 Fi Chain Offer API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Offer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Make new offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://loan-api.x2y2.org/v3/offer/make",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Make a new offer to either a single NFT or a whole collection."
+        },
+        {
+          "info": {
+            "name": "Get offers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://loan-api.x2y2.org/v3/offer/list",
+            "params": [
+              {
+                "name": "offerType",
+                "value": "",
+                "type": "query",
+                "description": "Offer type: [null: all, 1: single, 2: collection, 3: sub collection]"
+              },
+              {
+                "name": "nftAddress",
+                "value": "",
+                "type": "query",
+                "description": "Contract address of the NFT."
+              },
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "query",
+                "description": "Token Id of the NFT."
+              },
+              {
+                "name": "userAddress",
+                "value": "",
+                "type": "query",
+                "description": "Filter by offer maker's address."
+              },
+              {
+                "name": "isSufficient",
+                "value": "",
+                "type": "query",
+                "description": "Returns all offers or just offers with sufficient balance in wallet."
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query",
+                "description": "Filter by duration."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page record number."
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Offer sort field."
+              },
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction."
+              }
+            ]
+          },
+          "docs": "Get all offers that the NFT could be lent with, including both collection offers and NFT offers."
+        },
+        {
+          "info": {
+            "name": "Cancel all my offers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://loan-api.x2y2.org/v3/offer/cancelAll",
+            "headers": [
+              {
+                "name": "x-signature",
+                "value": ""
+              },
+              {
+                "name": "x-timestamp",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel user's all offers directly on server side. This is an off-chain cancel."
+        },
+        {
+          "info": {
+            "name": "Cancel offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://loan-api.x2y2.org/v3/offer/cancel",
+            "headers": [
+              {
+                "name": "x-signature",
+                "value": ""
+              },
+              {
+                "name": "x-timestamp",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an offer. This is an off-chain cancel."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

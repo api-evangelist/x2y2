@@ -1,0 +1,676 @@
+{
+  "item": [
+    {
+      "id": "1861b75a-e979-41ee-8851-18f0132b7ba1",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9153b762-f427-42ba-8949-501fee47ed84",
+          "name": "Fetch open orders",
+          "request": {
+            "name": "Fetch open orders",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "maker",
+                  "value": "<string>",
+                  "description": "Filter by the order maker's wallet address"
+                },
+                {
+                  "disabled": false,
+                  "key": "contract",
+                  "value": "<string>",
+                  "description": "Filter by contract address"
+                },
+                {
+                  "disabled": false,
+                  "key": "token_id",
+                  "value": "<integer>",
+                  "description": "Filter by the token ID of contract. Needs to be sent together with `contract`."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_before",
+                  "value": "<string>",
+                  "description": "Filter orders listed before this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_after",
+                  "value": "<string>",
+                  "description": "Filter orders listed after this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor to be supplied as a query param to retrieve the next page."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The property to sort the results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of orders to return (capped at 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "The order to sort by."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "f2f7faaf-e95b-48c6-ae85-b6c7c9e0b627",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contract",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"next\": null,\n  \"data\": [\n    {\n      \"type\": \"sell\",\n      \"id\": 1,\n      \"item_hash\": \"0x41a2753400f805db148079f60355df470aece45941a45cb96a25ab5d24e4c243\",\n      \"maker\": \"0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434\",\n      \"taker\": null,\n      \"token\": {\n        \"contract\": \"0xef1a89cbfabe59397ffda11fc5df293e9bc5db90\",\n        \"token_id\": 1,\n        \"erc_type\": \"erc721\"\n      },\n      \"price\": \"48700000000000000\",\n      \"currency\": \"0x0000000000000000000000000000000000000000\",\n      \"is_collection_offer\": false,\n      \"royalty_fee\": 0,\n      \"created_at\": 1654983000,\n      \"end_at\": 1654999000\n    },\n    {\n      \"type\": \"sell\",\n      \"id\": 1,\n      \"item_hash\": \"0x41a2753400f805db148079f60355df470aece45941a45cb96a25ab5d24e4c243\",\n      \"maker\": \"0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434\",\n      \"taker\": null,\n      \"token\": {\n        \"contract\": \"0xef1a89cbfabe59397ffda11fc5df293e9bc5db90\",\n        \"token_id\": 1,\n        \"erc_type\": \"erc721\"\n      },\n      \"price\": \"48700000000000000\",\n      \"currency\": \"0x0000000000000000000000000000000000000000\",\n      \"is_collection_offer\": false,\n      \"royalty_fee\": 0,\n      \"created_at\": 1654983000,\n      \"end_at\": 1654999000\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f44f192-3e3b-4190-aae7-fdb8c41b5be2",
+          "name": "Create open order",
+          "request": {
+            "name": "Create open order",
+            "description": {
+              "content": "Create a new open order, including new listings, price changes, and collection offers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                "add"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order\": \"<string>\",\n  \"isBundle\": false,\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"changePrice\": false,\n  \"isCollection\": false,\n  \"isPrivate\": false,\n  \"taker\": \"null\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d41c7272-f678-4c67-8e80-f9736cc274ec",
+              "name": "Order created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order\": \"<string>\",\n  \"isBundle\": false,\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"changePrice\": false,\n  \"isCollection\": false,\n  \"isPrivate\": false,\n  \"taker\": \"null\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3478a686-0729-4c70-a550-6524feabf2d2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order\": \"<string>\",\n  \"isBundle\": false,\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"changePrice\": false,\n  \"isCollection\": false,\n  \"isPrivate\": false,\n  \"taker\": \"null\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "846ff9b1-615e-43b2-b572-e3283a5a21d8",
+          "name": "Fetch order purchase input",
+          "request": {
+            "name": "Fetch order purchase input",
+            "description": {
+              "content": "Get the input to be submitted via user's wallet to purchase or accept an offer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                "sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"caller\": \"<string>\",\n  \"op\": 1,\n  \"amountToEth\": \"0\",\n  \"amountToWeth\": \"0\",\n  \"items\": [\n    {\n      \"orderId\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"price\": \"<string>\",\n      \"tokenId\": \"<string>\"\n    },\n    {\n      \"orderId\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"price\": \"<string>\",\n      \"tokenId\": \"<string>\"\n    }\n  ],\n  \"check\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "993e8072-b36b-48e7-8346-0697c5b6896a",
+              "name": "Purchase input returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caller\": \"<string>\",\n  \"op\": 1,\n  \"amountToEth\": \"0\",\n  \"amountToWeth\": \"0\",\n  \"items\": [\n    {\n      \"orderId\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"price\": \"<string>\",\n      \"tokenId\": \"<string>\"\n    },\n    {\n      \"orderId\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"price\": \"<string>\",\n      \"tokenId\": \"<string>\"\n    }\n  ],\n  \"check\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"order_id\": 1,\n      \"input\": \"string\"\n    },\n    {\n      \"order_id\": 1,\n      \"input\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4aa0d437-09e3-4657-a3aa-1c85ee89d35f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caller\": \"<string>\",\n  \"op\": 1,\n  \"amountToEth\": \"0\",\n  \"amountToWeth\": \"0\",\n  \"items\": [\n    {\n      \"orderId\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"price\": \"<string>\",\n      \"tokenId\": \"<string>\"\n    },\n    {\n      \"orderId\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"price\": \"<string>\",\n      \"tokenId\": \"<string>\"\n    }\n  ],\n  \"check\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1053f29-2bab-4d06-882c-34eb4ac2fe1e",
+          "name": "Fetch order cancel input",
+          "request": {
+            "name": "Fetch order cancel input",
+            "description": {
+              "content": "Get the input to be submitted via user's wallet to cancel orders on chain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"caller\": \"<string>\",\n  \"op\": 3,\n  \"items\": [\n    {\n      \"orderId\": \"<integer>\"\n    },\n    {\n      \"orderId\": \"<integer>\"\n    }\n  ],\n  \"sign_message\": \"<string>\",\n  \"sign\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "389d7351-cee0-4645-8b8a-c8a0dbe2afa6",
+              "name": "Cancel input returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caller\": \"<string>\",\n  \"op\": 3,\n  \"items\": [\n    {\n      \"orderId\": \"<integer>\"\n    },\n    {\n      \"orderId\": \"<integer>\"\n    }\n  ],\n  \"sign_message\": \"<string>\",\n  \"sign\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"order_id\": 1,\n      \"input\": \"string\"\n    },\n    {\n      \"order_id\": 1,\n      \"input\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd86cf27-a055-4fed-b468-cc76d7d1656f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caller\": \"<string>\",\n  \"op\": 3,\n  \"items\": [\n    {\n      \"orderId\": \"<integer>\"\n    },\n    {\n      \"orderId\": \"<integer>\"\n    }\n  ],\n  \"sign_message\": \"<string>\",\n  \"sign\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://loan-api.x2y2.org/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "31c8fce8-0037-4ccf-a663-479023fd3de9",
+    "name": "X2Y2 Fi Chain Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

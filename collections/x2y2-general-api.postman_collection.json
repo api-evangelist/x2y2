@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "514fdb2f-8acd-4c8d-b529-94b27b69946e",
+      "name": "General",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1f60702d-4139-4616-af0f-036db7e0bcfb",
+          "name": "Get System Params",
+          "request": {
+            "name": "Get System Params",
+            "description": {
+              "content": "Retrieve system-level lending parameters including whitelisted collections, APR ranges, durations, token contracts, and fee settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "sys",
+                "loanParam"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "196acd70-b2b9-43e3-a3af-15861fa5d271",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "sys",
+                    "loanParam"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"whitelist\": [\n      \"string\",\n      \"string\"\n    ],\n    \"aprRange\": [\n      8246,\n      3930\n    ],\n    \"duration\": [\n      4838,\n      9754\n    ],\n    \"tokenContract\": [\n      \"string\",\n      \"string\"\n    ],\n    \"offerExpireRange\": [\n      1249,\n      2769\n    ],\n    \"adminFee\": 3198,\n    \"signatureExpireTime\": 8578,\n    \"minimumAmount\": 7810,\n    \"collections\": [\n      {\n        \"nftAddress\": \"string\",\n        \"disableCollection\": 6220\n      },\n      {\n        \"nftAddress\": \"string\",\n        \"disableCollection\": 8209\n      }\n    ]\n  },\n  \"code\": 3317,\n  \"msg\": \"string\",\n  \"t\": 3650\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://loan-api.x2y2.org/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fcb44837-029b-4b74-965e-1dad6bb93d06",
+    "name": "X2Y2 Fi Chain General API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

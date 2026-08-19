@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "X2Y2 Fi Chain Loan API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get loans list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://loan-api.x2y2.org/v3/order/list",
+            "params": [
+              {
+                "name": "nftAddress",
+                "value": "",
+                "type": "query",
+                "description": "NFT contract address."
+              },
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "query",
+                "description": "NFT tokenId."
+              },
+              {
+                "name": "lender",
+                "value": "",
+                "type": "query",
+                "description": "Lender's address."
+              },
+              {
+                "name": "borrower",
+                "value": "",
+                "type": "query",
+                "description": "Borrower's address."
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query",
+                "description": "Filter by duration."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status: ['current', 'history']."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page record number."
+              }
+            ]
+          },
+          "docs": "Get the current loans lent by a wallet address."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

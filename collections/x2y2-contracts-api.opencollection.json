@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "X2Y2 Fi Chain Contracts API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contracts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://loan-api.x2y2.org/v1/contracts/:contract",
+            "params": [
+              {
+                "name": "contract",
+                "value": "",
+                "type": "path",
+                "description": "Filter by contract address"
+              }
+            ]
+          },
+          "docs": "Fetch contract"
+        },
+        {
+          "info": {
+            "name": "Fetch contract stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://loan-api.x2y2.org/v1/contracts/:contract/stats",
+            "params": [
+              {
+                "name": "contract",
+                "value": "",
+                "type": "path",
+                "description": "Filter by contract address"
+              }
+            ]
+          },
+          "docs": "Fetch contract stats"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

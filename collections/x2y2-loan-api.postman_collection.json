@@ -1,0 +1,213 @@
+{
+  "item": [
+    {
+      "id": "bbff44a9-a993-4d53-8750-7d20216b5ef9",
+      "name": "Loan",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eeabc207-40f6-4495-85a1-39f891a863d2",
+          "name": "Get loans list",
+          "request": {
+            "name": "Get loans list",
+            "description": {
+              "content": "Get the current loans lent by a wallet address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "order",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nftAddress",
+                  "value": "<string>",
+                  "description": "NFT contract address."
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenId",
+                  "value": "<string>",
+                  "description": "NFT tokenId."
+                },
+                {
+                  "disabled": false,
+                  "key": "lender",
+                  "value": "<string>",
+                  "description": "Lender's address."
+                },
+                {
+                  "disabled": false,
+                  "key": "borrower",
+                  "value": "<string>",
+                  "description": "Borrower's address."
+                },
+                {
+                  "disabled": false,
+                  "key": "duration",
+                  "value": "<integer>",
+                  "description": "Filter by duration."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Order status: ['current', 'history']."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "Page record number."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48c2e924-5832-422f-84da-8dea18a81269",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "order",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nftAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "borrower",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"page\": 375,\n    \"page_size\": 7794,\n    \"more_page\": false,\n    \"total\": 6853,\n    \"list\": [\n      {\n        \"loanId\": 8614,\n        \"nftAddress\": \"string\",\n        \"tokenId\": \"string\",\n        \"borrower\": \"string\",\n        \"lender\": \"string\",\n        \"amount\": \"string\",\n        \"repayment\": \"string\",\n        \"apr\": 3555,\n        \"duration\": 5473,\n        \"createTime\": 1657,\n        \"dueTime\": 5957,\n        \"status\": 6174,\n        \"erc20Address\": \"string\",\n        \"repaidDate\": 3617,\n        \"claimDate\": 2350,\n        \"nftName\": \"string\",\n        \"nftShortName\": \"string\"\n      },\n      {\n        \"loanId\": 4186,\n        \"nftAddress\": \"string\",\n        \"tokenId\": \"string\",\n        \"borrower\": \"string\",\n        \"lender\": \"string\",\n        \"amount\": \"string\",\n        \"repayment\": \"string\",\n        \"apr\": 4891,\n        \"duration\": 7662,\n        \"createTime\": 3975,\n        \"dueTime\": 4348,\n        \"status\": 1813,\n        \"erc20Address\": \"string\",\n        \"repaidDate\": 4140,\n        \"claimDate\": 6018,\n        \"nftName\": \"string\",\n        \"nftShortName\": \"string\"\n      }\n    ]\n  },\n  \"code\": 9959,\n  \"msg\": \"string\",\n  \"t\": 7506\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://loan-api.x2y2.org/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "78ba3657-494c-4784-aa4e-f80c21dc85f4",
+    "name": "X2Y2 Fi Chain Loan API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

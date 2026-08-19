@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "X2Y2 Fi Chain Events API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://loan-api.x2y2.org/v1/events",
+            "params": [
+              {
+                "name": "from_address",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event from address"
+              },
+              {
+                "name": "to_address",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event to address"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the event type"
+              },
+              {
+                "name": "contract",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contract address"
+              },
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the token ID of contract. Needs to be sent together with `contract`."
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders listed before this timestamp."
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders listed after this timestamp."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of events to return (capped at 200)."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A cursor to be supplied as a query param to retrieve the next page."
+              }
+            ]
+          },
+          "docs": "Fetch events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

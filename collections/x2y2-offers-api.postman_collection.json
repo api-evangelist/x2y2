@@ -1,0 +1,227 @@
+{
+  "item": [
+    {
+      "id": "934d77ef-8590-41bd-b234-56eb4cb1a5ca",
+      "name": "Offers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5a9c69e9-8134-4fc8-b244-1e2f78c63330",
+          "name": "Fetch open offers",
+          "request": {
+            "name": "Fetch open offers",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "offers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Type of offers to filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "maker",
+                  "value": "<string>",
+                  "description": "Filter by the offer maker's wallet address"
+                },
+                {
+                  "disabled": false,
+                  "key": "contract",
+                  "value": "<string>",
+                  "description": "Filter by contract address. If `token_id` is not specified, only collection offers will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "token_id",
+                  "value": "<integer>",
+                  "description": "Filter by the token ID of contract. Needs to be sent together with `contract`. Collection offers will not be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_before",
+                  "value": "<string>",
+                  "description": "Filter offers created before this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_after",
+                  "value": "<string>",
+                  "description": "Filter offers created after this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor to be supplied as a query param to retrieve the next page."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The property to sort the results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of orders to return (capped at 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "The order to sort by."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "49afdcd3-d418-450c-bb97-417176e15220",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "offers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contract",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"next\": null,\n  \"data\": [\n    {\n      \"type\": \"sell\",\n      \"id\": 1,\n      \"item_hash\": \"0x41a2753400f805db148079f60355df470aece45941a45cb96a25ab5d24e4c243\",\n      \"maker\": \"0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434\",\n      \"taker\": null,\n      \"token\": {\n        \"contract\": \"0xef1a89cbfabe59397ffda11fc5df293e9bc5db90\",\n        \"token_id\": 1,\n        \"erc_type\": \"erc721\"\n      },\n      \"price\": \"48700000000000000\",\n      \"currency\": \"0x0000000000000000000000000000000000000000\",\n      \"is_collection_offer\": false,\n      \"royalty_fee\": 0,\n      \"created_at\": 1654983000,\n      \"end_at\": 1654999000\n    },\n    {\n      \"type\": \"sell\",\n      \"id\": 1,\n      \"item_hash\": \"0x41a2753400f805db148079f60355df470aece45941a45cb96a25ab5d24e4c243\",\n      \"maker\": \"0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434\",\n      \"taker\": null,\n      \"token\": {\n        \"contract\": \"0xef1a89cbfabe59397ffda11fc5df293e9bc5db90\",\n        \"token_id\": 1,\n        \"erc_type\": \"erc721\"\n      },\n      \"price\": \"48700000000000000\",\n      \"currency\": \"0x0000000000000000000000000000000000000000\",\n      \"is_collection_offer\": false,\n      \"royalty_fee\": 0,\n      \"created_at\": 1654983000,\n      \"end_at\": 1654999000\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://loan-api.x2y2.org/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f5c534fa-4ad9-4e8c-b98d-d1cf1738c0d4",
+    "name": "X2Y2 Fi Chain Offers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

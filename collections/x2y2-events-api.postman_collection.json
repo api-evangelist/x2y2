@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "2579db0b-9b69-4fce-8834-d6f093df6ceb",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4960bc51-3a89-467b-9bee-db593231e31d",
+          "name": "Fetch events",
+          "request": {
+            "name": "Fetch events",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from_address",
+                  "value": "<string>",
+                  "description": "Filter by event from address"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_address",
+                  "value": "<string>",
+                  "description": "Filter by event to address"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Filter by the event type"
+                },
+                {
+                  "disabled": false,
+                  "key": "contract",
+                  "value": "<string>",
+                  "description": "Filter by contract address"
+                },
+                {
+                  "disabled": false,
+                  "key": "token_id",
+                  "value": "<integer>",
+                  "description": "Filter by the token ID of contract. Needs to be sent together with `contract`."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_before",
+                  "value": "<string>",
+                  "description": "Filter orders listed before this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_after",
+                  "value": "<string>",
+                  "description": "Filter orders listed after this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of events to return (capped at 200)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor to be supplied as a query param to retrieve the next page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "cb4cf06b-94b0-4729-8f13-7b996c997820",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contract",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"next\": null,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"from_address\": \"0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434\",\n      \"to_address\": \"0x6c6fa394709ed4c9c593344350c99dfcd1cae364\",\n      \"token\": {\n        \"contract\": \"0xef1a89cbfabe59397ffda11fc5df293e9bc5db90\",\n        \"token_id\": 1,\n        \"erc_type\": \"erc721\"\n      },\n      \"order\": {\n        \"type\": \"sell\",\n        \"id\": 1,\n        \"item_hash\": \"0x41a2753400f805db148079f60355df470aece45941a45cb96a25ab5d24e4c243\",\n        \"maker\": \"0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434\",\n        \"taker\": null,\n        \"token\": {\n          \"contract\": \"0xef1a89cbfabe59397ffda11fc5df293e9bc5db90\",\n          \"token_id\": 1,\n          \"erc_type\": \"erc721\"\n        },\n        \"price\": \"48700000000000000\",\n        \"currency\": \"0x0000000000000000000000000000000000000000\",\n        \"is_collection_offer\": false,\n        \"royalty_fee\": 0,\n        \"created_at\": 1654983000,\n        \"end_at\": 1654999000\n      },\n      \"tx\": null,\n      \"type\": \"offer_listing\",\n      \"created_at\": 1654983000\n    },\n    {\n      \"id\": 1,\n      \"from_address\": \"0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434\",\n      \"to_address\": \"0x6c6fa394709ed4c9c593344350c99dfcd1cae364\",\n      \"token\": {\n        \"contract\": \"0xef1a89cbfabe59397ffda11fc5df293e9bc5db90\",\n        \"token_id\": 1,\n        \"erc_type\": \"erc721\"\n      },\n      \"order\": {\n        \"type\": \"sell\",\n        \"id\": 1,\n        \"item_hash\": \"0x41a2753400f805db148079f60355df470aece45941a45cb96a25ab5d24e4c243\",\n        \"maker\": \"0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434\",\n        \"taker\": null,\n        \"token\": {\n          \"contract\": \"0xef1a89cbfabe59397ffda11fc5df293e9bc5db90\",\n          \"token_id\": 1,\n          \"erc_type\": \"erc721\"\n        },\n        \"price\": \"48700000000000000\",\n        \"currency\": \"0x0000000000000000000000000000000000000000\",\n        \"is_collection_offer\": false,\n        \"royalty_fee\": 0,\n        \"created_at\": 1654983000,\n        \"end_at\": 1654999000\n      },\n      \"tx\": null,\n      \"type\": \"offer_listing\",\n      \"created_at\": 1654983000\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://loan-api.x2y2.org/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a0ed0e2c-510e-4212-ba07-c86eface9c7f",
+    "name": "X2Y2 Fi Chain Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,590 @@
+{
+  "item": [
+    {
+      "id": "c8d1b986-33aa-45a0-b054-c6e7f5eb2b93",
+      "name": "Offer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2fa6871-2124-45e6-8798-c97b381fe89a",
+          "name": "Make new offer",
+          "request": {
+            "name": "Make new offer",
+            "description": {
+              "content": "Make a new offer to either a single NFT or a whole collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "offer",
+                "make"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expiry\": \"<integer>\",\n  \"lender\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"repayment\": \"<string>\",\n  \"nftAddress\": \"<string>\",\n  \"tokenId\": \"<string>\",\n  \"duration\": \"<integer>\",\n  \"erc20Address\": \"<string>\",\n  \"createTime\": \"<integer>\",\n  \"signature\": \"<string>\",\n  \"itemType\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"counter\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0466d148-57b3-40c5-92ee-479c5ad9152c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "offer",
+                    "make"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expiry\": \"<integer>\",\n  \"lender\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"repayment\": \"<string>\",\n  \"nftAddress\": \"<string>\",\n  \"tokenId\": \"<string>\",\n  \"duration\": \"<integer>\",\n  \"erc20Address\": \"<string>\",\n  \"createTime\": \"<integer>\",\n  \"signature\": \"<string>\",\n  \"itemType\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"counter\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"offerId\": \"string\",\n    \"optType\": \"string\"\n  },\n  \"code\": 1275,\n  \"msg\": \"string\",\n  \"t\": 9221\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07fc15c4-47ff-4215-8379-021986527546",
+          "name": "Get offers",
+          "request": {
+            "name": "Get offers",
+            "description": {
+              "content": "Get all offers that the NFT could be lent with, including both collection offers and NFT offers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "offer",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offerType",
+                  "value": "<string>",
+                  "description": "Offer type: [null: all, 1: single, 2: collection, 3: sub collection]"
+                },
+                {
+                  "disabled": false,
+                  "key": "nftAddress",
+                  "value": "<string>",
+                  "description": "(Required) Contract address of the NFT."
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenId",
+                  "value": "<string>",
+                  "description": "(Required) Token Id of the NFT."
+                },
+                {
+                  "disabled": false,
+                  "key": "userAddress",
+                  "value": "<string>",
+                  "description": "Filter by offer maker's address."
+                },
+                {
+                  "disabled": false,
+                  "key": "isSufficient",
+                  "value": "1",
+                  "description": "Returns all offers or just offers with sufficient balance in wallet."
+                },
+                {
+                  "disabled": false,
+                  "key": "duration",
+                  "value": "<integer>",
+                  "description": "Filter by duration."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "Page record number."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortField",
+                  "value": "createTime",
+                  "description": "Offer sort field."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortDirection",
+                  "value": "desc",
+                  "description": "Sort direction."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca207d3f-4efa-4c09-b199-72775fc10773",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "offer",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offerType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nftAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isSufficient",
+                      "value": "1"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "createTime"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"page\": 4041,\n    \"page_size\": 9445,\n    \"more_page\": false,\n    \"total\": 2919,\n    \"list\": [\n      {\n        \"offerId\": \"string\",\n        \"offerType\": 2521,\n        \"tokenId\": \"string\",\n        \"nftAddress\": \"string\",\n        \"amount\": \"string\",\n        \"repayment\": \"string\",\n        \"apr\": 3908,\n        \"lender\": \"string\",\n        \"expireTime\": 3966,\n        \"duration\": 4546,\n        \"size\": 5504,\n        \"usedSize\": 8963,\n        \"counter\": 5461,\n        \"itemType\": 4296,\n        \"erc20Address\": \"string\",\n        \"status\": 5354,\n        \"createTime\": 5212,\n        \"nftName\": \"string\",\n        \"nftShortName\": \"string\",\n        \"isSufficient\": 4636\n      },\n      {\n        \"offerId\": \"string\",\n        \"offerType\": 1786,\n        \"tokenId\": \"string\",\n        \"nftAddress\": \"string\",\n        \"amount\": \"string\",\n        \"repayment\": \"string\",\n        \"apr\": 4735,\n        \"lender\": \"string\",\n        \"expireTime\": 7769,\n        \"duration\": 1391,\n        \"size\": 7197,\n        \"usedSize\": 827,\n        \"counter\": 4874,\n        \"itemType\": 7897,\n        \"erc20Address\": \"string\",\n        \"status\": 8167,\n        \"createTime\": 828,\n        \"nftName\": \"string\",\n        \"nftShortName\": \"string\",\n        \"isSufficient\": 1400\n      }\n    ]\n  },\n  \"code\": 1858,\n  \"msg\": \"string\",\n  \"t\": 2377\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0fbc3c1-13de-4291-b3cc-e3419442a062",
+          "name": "Cancel all my offers",
+          "request": {
+            "name": "Cancel all my offers",
+            "description": {
+              "content": "Cancel user's all offers directly on server side. This is an off-chain cancel.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "offer",
+                "cancelAll"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-signature",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-timestamp",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userAddress\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4fc74aa5-a880-4a6b-99d5-acc9b21c754f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "offer",
+                    "cancelAll"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-timestamp",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAddress\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"code\": 1825,\n  \"msg\": \"string\",\n  \"t\": 322\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbbac0ee-6af0-43c8-a1f8-a64ac3dfe1f2",
+          "name": "Cancel offer",
+          "request": {
+            "name": "Cancel offer",
+            "description": {
+              "content": "Cancel an offer. This is an off-chain cancel.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "offer",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-signature",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-timestamp",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userAddress\": \"<string>\",\n  \"offerId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "63c896b8-0a2c-4870-8332-82667185f316",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "offer",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-timestamp",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAddress\": \"<string>\",\n  \"offerId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"code\": 1825,\n  \"msg\": \"string\",\n  \"t\": 322\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://loan-api.x2y2.org/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "701ec1dc-947b-41a8-a479-b99c48084d82",
+    "name": "X2Y2 Fi Chain Offer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
