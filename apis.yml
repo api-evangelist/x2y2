@@ -20,7 +20,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/x2y2.png
 url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-06-14'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 tags:
   - NFT
   - Ethereum
