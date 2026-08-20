@@ -74,6 +74,8 @@ apis:
   humanURL: https://docs.x2y2.io/developers/api
   baseURL: https://api.x2y2.org
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -92,7 +94,8 @@ apis:
   description: The General API from X2Y2 — 1 operation(s) for general.
   humanURL: https://docs.x2y2.io/developers/api
   baseURL: https://api.x2y2.org
-  tags:
+  tags: []
+  tags_raw:
   - General
   properties:
   - type: OpenAPI
@@ -169,6 +172,8 @@ apis:
   humanURL: https://docs.x2y2.io/developers/api
   baseURL: https://api.x2y2.org
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
