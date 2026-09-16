@@ -1,9 +1,8 @@
 name: X2Y2
-description: X2Y2 is an NFT marketplace and trading platform on Ethereum offering
-  REST APIs for querying listings, offers, sales history, collection statistics, and
-  executing NFT trades. It provides one of the lowest marketplace fees in the industry
-  at 0.5% and includes an NFT-backed lending (Fi) API suite alongside its core marketplace
-  API.
+description: X2Y2 is an NFT marketplace and trading platform on Ethereum offering REST APIs for querying
+  listings, offers, sales history, collection statistics, and executing NFT trades. It provides one of
+  the lowest marketplace fees in the industry at 0.5% and includes an NFT-backed lending (Fi) API suite
+  alongside its core marketplace API.
 deliveryModel:
   model: saas
   open_source: false
@@ -32,16 +31,16 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/x2y2.png
 url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-06-14'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
-  - NFT
-  - Ethereum
-  - Marketplace
-  - Blockchain
-  - Web3
-  - Collectibles
-  - Trading
+- NFT
+- Ethereum
+- Marketplace
+- Blockchain
+- Web3
+- Collectibles
+- Trading
 apis:
 - aid: x2y2:x2y2-chain-api
   name: X2Y2 Chain API
@@ -58,8 +57,7 @@ apis:
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
   - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
 - aid: x2y2:x2y2-contracts-api
@@ -77,8 +75,7 @@ apis:
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
   - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
 - aid: x2y2:x2y2-events-api
@@ -98,8 +95,7 @@ apis:
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
   - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
 - aid: x2y2:x2y2-general-api
@@ -118,8 +114,7 @@ apis:
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
   - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
 - aid: x2y2:x2y2-loan-api
@@ -137,8 +132,7 @@ apis:
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
   - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
 - aid: x2y2:x2y2-offer-api
@@ -156,8 +150,7 @@ apis:
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
   - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
 - aid: x2y2:x2y2-offers-api
@@ -175,8 +168,7 @@ apis:
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
   - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
 - aid: x2y2:x2y2-orders-api
@@ -196,28 +188,29 @@ apis:
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/plans/plans.md
   - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
+    url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/rate-limits/rate-limits.md
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/x2y2/refs/heads/main/finops/finops.md
 common:
-  - type: AgenticAccess
-    url: agentic-access/x2y2-agentic-access.yml
-  - type: DomainSecurity
-    url: security/x2y2-domain-security.yml
-  - type: Authentication
-    url: authentication/x2y2-authentication.yml
-  - type: GitHub
-    url: https://github.com/X2Y2-io
-  - type: SDKs
-    url: https://github.com/X2Y2-io/x2y2-sdk
-  - type: npm
-    url: https://www.npmjs.com/package/@x2y2-io/sdk
-  - type: Documentation
-    url: https://docs.x2y2.io/developers/api
-  - type: APIReference
-    url: https://x2y2.readme.io/reference/introduction
+- type: Website
+  url: https://x2y2.io
+- type: AgenticAccess
+  url: agentic-access/x2y2-agentic-access.yml
+- type: DomainSecurity
+  url: security/x2y2-domain-security.yml
+- type: Authentication
+  url: authentication/x2y2-authentication.yml
+- type: GitHub
+  url: https://github.com/X2Y2-io
+- type: SDKs
+  url: https://github.com/X2Y2-io/x2y2-sdk
+- type: npm
+  url: https://www.npmjs.com/package/@x2y2-io/sdk
+- type: Documentation
+  url: https://docs.x2y2.io/developers/api
+- type: APIReference
+  url: https://x2y2.readme.io/reference/introduction
 maintainers:
-  - FN: API Evangelist
-    url: https://apievangelist.com
-    email: info@apievangelist.com
+- FN: API Evangelist
+  url: https://apievangelist.com
+  email: info@apievangelist.com
