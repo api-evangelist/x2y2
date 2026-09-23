@@ -1,12 +1,10 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: X2Y2 Fi Chain Contracts API
-  version: '3.0'
+  title: X2Y2 Open Contracts API
+  version: 1.0.0
 servers:
-- url: https://loan-api.x2y2.org/
-- url: https://goerli-loan-api.x2y2.org/
-security:
-- sec0: []
+- url: https://api.x2y2.org/
+- url: https://goerli-api.x2y2.org/
 tags:
 - name: Contracts
 paths:
@@ -56,46 +54,6 @@ paths:
                 $ref: '#/components/schemas/ContractStatsResponse'
 components:
   schemas:
-    ContractV1:
-      type: object
-      properties:
-        contract:
-          type: string
-          default: '0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e'
-          nullable: false
-        erc_type:
-          type: integer
-          default: 0
-          nullable: false
-        name:
-          type: string
-          default: Doodle
-          nullable: false
-        symbol:
-          type: string
-          default: DOODLE
-          nullable: false
-        royalty_fee:
-          type: integer
-          default: 0
-          description: Base rate is 10^6. For example, 50000 means 5%
-          nullable: false
-        slug:
-          type: string
-          default: doodles-official
-          nullable: true
-        verified:
-          type: boolean
-          default: true
-          nullable: false
-        suspicious:
-          type: boolean
-          default: false
-          nullable: false
-        nsfw:
-          type: boolean
-          default: false
-          nullable: false
     ContractStatsResponse:
       type: object
       properties:
@@ -109,6 +67,45 @@ components:
           $ref: '#/components/schemas/ContractStats'
       required:
       - success
+    ContractStats:
+      type: object
+      properties:
+        floor_price:
+          type: string
+          default: '48700000000000000'
+    ContractV1:
+      type: object
+      properties:
+        contract:
+          type: string
+          default: '0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e'
+        erc_type:
+          type: integer
+          default: 0
+        name:
+          type: string
+          default: Doodle
+        symbol:
+          type: string
+          default: DOODLE
+        royalty_fee:
+          type: integer
+          default: 0
+          description: Base rate is 10^6. For example, 50000 means 5%
+        slug:
+          type:
+          - string
+          - 'null'
+          default: doodles-official
+        verified:
+          type: boolean
+          default: true
+        suspicious:
+          type: boolean
+          default: false
+        nsfw:
+          type: boolean
+          default: false
     OpenAPIContractResponse:
       type: object
       properties:
@@ -122,14 +119,8 @@ components:
           $ref: '#/components/schemas/ContractV1'
       required:
       - success
-    ContractStats:
-      type: object
-      properties:
-        floor_price:
-          type: string
-          default: '48700000000000000'
   securitySchemes:
-    sec0:
+    ApiKeyAuth:
       type: apiKey
       in: header
-      name: X-API-KEY
+      name: X-API-Key

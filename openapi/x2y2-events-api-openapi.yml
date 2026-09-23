@@ -1,12 +1,10 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: X2Y2 Fi Chain Events API
-  version: '3.0'
+  title: X2Y2 Open Events API
+  version: 1.0.0
 servers:
-- url: https://loan-api.x2y2.org/
-- url: https://goerli-loan-api.x2y2.org/
-security:
-- sec0: []
+- url: https://api.x2y2.org/
+- url: https://goerli-api.x2y2.org/
 tags:
 - name: Events
 paths:
@@ -86,21 +84,21 @@ paths:
                 $ref: '#/components/schemas/EventResponse'
 components:
   schemas:
-    EventResponse:
+    TokenLite:
       type: object
       properties:
-        success:
-          type: boolean
-          default: true
-        next:
+        contract:
           type: string
-          default: null
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
-      required:
-      - success
+          default: '0xef1a89cbfabe59397ffda11fc5df293e9bc5db90'
+        token_id:
+          type: integer
+          default: 1
+        erc_type:
+          type: string
+          default: erc721
+          enum:
+          - erc721
+          - erc1155
     Event:
       type: object
       properties:
@@ -167,26 +165,23 @@ components:
           default: 1654999000
       required:
       - type
-    TokenLite:
+    EventResponse:
       type: object
       properties:
-        contract:
+        success:
+          type: boolean
+          default: true
+        next:
           type: string
-          default: '0xef1a89cbfabe59397ffda11fc5df293e9bc5db90'
-          nullable: false
-        token_id:
-          type: integer
-          default: 1
-          nullable: false
-        erc_type:
-          type: string
-          default: erc721
-          enum:
-          - erc721
-          - erc1155
-          nullable: false
+          default: null
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+      required:
+      - success
   securitySchemes:
-    sec0:
+    ApiKeyAuth:
       type: apiKey
       in: header
-      name: X-API-KEY
+      name: X-API-Key

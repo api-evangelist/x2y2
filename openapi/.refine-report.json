@@ -1,28 +1,44 @@
 {
   "provider": "x2y2",
   "sources": [
-    "x2y2-chain-api-openapi.yml",
-    "x2y2-contracts-api-openapi.yml",
-    "x2y2-events-api-openapi.yml",
-    "x2y2-general-api-openapi.yml",
-    "x2y2-loan-api-openapi.yml",
-    "x2y2-offer-api-openapi.yml",
-    "x2y2-offers-api-openapi.yml",
-    "x2y2-orders-api-openapi.yml"
+    "_original/x2y2-fi-api.json",
+    "_original/x2y2-openapi.json",
+    "_original/x2y2-post-apis.json"
   ],
   "outputs": [
     "x2y2-chain-api-openapi.yml",
-    "x2y2-contracts-api-openapi.yml",
-    "x2y2-events-api-openapi.yml",
     "x2y2-general-api-openapi.yml",
     "x2y2-loan-api-openapi.yml",
     "x2y2-offer-api-openapi.yml",
+    "x2y2-contracts-api-openapi.yml",
+    "x2y2-events-api-openapi.yml",
     "x2y2-offers-api-openapi.yml",
     "x2y2-orders-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "x2y2-fi-api.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "x2y2-openapi.json: upgraded openapi 3.0.2 -> OpenAPI 3.2.0",
+    "x2y2-openapi.json: declared missing tag: Contracts",
+    "x2y2-openapi.json: declared missing tag: Events",
+    "x2y2-openapi.json: declared missing tag: Offers",
+    "x2y2-openapi.json: declared missing tag: Orders",
+    "x2y2-post-apis.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "x2y2-post-apis.json: declared missing tag: Orders",
+    "tag 'Orders' spans 2 source specs (x2y2-openapi.json, x2y2-post-apis.json): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "x2y2-chain-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "x2y2-contracts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "x2y2-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "x2y2-general-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "x2y2-loan-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "x2y2-offer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "x2y2-offers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "x2y2-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
