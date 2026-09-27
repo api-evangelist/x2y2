@@ -111,6 +111,21 @@ components:
             $ref: '#/components/schemas/Order'
       required:
       - success
+    TokenLite:
+      type: object
+      properties:
+        contract:
+          type: string
+          default: '0xef1a89cbfabe59397ffda11fc5df293e9bc5db90'
+        token_id:
+          type: integer
+          default: 1
+        erc_type:
+          type: string
+          default: erc721
+          enum:
+          - erc721
+          - erc1155
     Order:
       type: object
       properties:
@@ -152,21 +167,6 @@ components:
           default: 1654999000
       required:
       - type
-    TokenLite:
-      type: object
-      properties:
-        contract:
-          type: string
-          default: '0xef1a89cbfabe59397ffda11fc5df293e9bc5db90'
-        token_id:
-          type: integer
-          default: 1
-        erc_type:
-          type: string
-          default: erc721
-          enum:
-          - erc721
-          - erc1155
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

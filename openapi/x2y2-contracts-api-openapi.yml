@@ -67,12 +67,6 @@ components:
           $ref: '#/components/schemas/ContractStats'
       required:
       - success
-    ContractStats:
-      type: object
-      properties:
-        floor_price:
-          type: string
-          default: '48700000000000000'
     ContractV1:
       type: object
       properties:
@@ -119,6 +113,12 @@ components:
           $ref: '#/components/schemas/ContractV1'
       required:
       - success
+    ContractStats:
+      type: object
+      properties:
+        floor_price:
+          type: string
+          default: '48700000000000000'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
