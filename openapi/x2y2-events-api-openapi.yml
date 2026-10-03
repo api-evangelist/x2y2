@@ -99,6 +99,31 @@ components:
           enum:
           - erc721
           - erc1155
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+          default: 1
+        from_address:
+          type: string
+          default: '0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434'
+        to_address:
+          type: string
+          default: '0x6c6fa394709ed4c9c593344350c99dfcd1cae364'
+        token:
+          $ref: '#/components/schemas/TokenLite'
+        order:
+          $ref: '#/components/schemas/Order'
+        tx:
+          type: string
+          default: null
+        type:
+          type: string
+          default: offer_listing
+        created_at:
+          type: string
+          default: 1654983000
     EventResponse:
       type: object
       properties:
@@ -155,31 +180,6 @@ components:
           default: 1654999000
       required:
       - type
-    Event:
-      type: object
-      properties:
-        id:
-          type: integer
-          default: 1
-        from_address:
-          type: string
-          default: '0x40415c1c0e7a8ff3e184b51a94a2fc5b92df9434'
-        to_address:
-          type: string
-          default: '0x6c6fa394709ed4c9c593344350c99dfcd1cae364'
-        token:
-          $ref: '#/components/schemas/TokenLite'
-        order:
-          $ref: '#/components/schemas/Order'
-        tx:
-          type: string
-          default: null
-        type:
-          type: string
-          default: offer_listing
-        created_at:
-          type: string
-          default: 1654983000
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
