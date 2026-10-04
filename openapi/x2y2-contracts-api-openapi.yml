@@ -54,19 +54,12 @@ paths:
                 $ref: '#/components/schemas/ContractStatsResponse'
 components:
   schemas:
-    OpenAPIContractResponse:
+    ContractStats:
       type: object
       properties:
-        success:
-          type: boolean
-          default: true
-        next:
+        floor_price:
           type: string
-          default: null
-        data:
-          $ref: '#/components/schemas/ContractV1'
-      required:
-      - success
+          default: '48700000000000000'
     ContractV1:
       type: object
       properties:
@@ -100,12 +93,6 @@ components:
         nsfw:
           type: boolean
           default: false
-    ContractStats:
-      type: object
-      properties:
-        floor_price:
-          type: string
-          default: '48700000000000000'
     ContractStatsResponse:
       type: object
       properties:
@@ -117,6 +104,19 @@ components:
           default: null
         data:
           $ref: '#/components/schemas/ContractStats'
+      required:
+      - success
+    OpenAPIContractResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          default: true
+        next:
+          type: string
+          default: null
+        data:
+          $ref: '#/components/schemas/ContractV1'
       required:
       - success
   securitySchemes:

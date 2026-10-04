@@ -336,21 +336,6 @@ components:
           enum:
           - erc721
           - erc1155
-    OrderResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          default: true
-        next:
-          type: string
-          default: null
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
-      required:
-      - success
     Order:
       type: object
       properties:
@@ -392,6 +377,21 @@ components:
           default: 1654999000
       required:
       - type
+    OrderResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          default: true
+        next:
+          type: string
+          default: null
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+      required:
+      - success
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
