@@ -84,21 +84,21 @@ paths:
                 $ref: '#/components/schemas/EventResponse'
 components:
   schemas:
-    EventResponse:
+    TokenLite:
       type: object
       properties:
-        success:
-          type: boolean
-          default: true
-        next:
+        contract:
           type: string
-          default: null
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
-      required:
-      - success
+          default: '0xef1a89cbfabe59397ffda11fc5df293e9bc5db90'
+        token_id:
+          type: integer
+          default: 1
+        erc_type:
+          type: string
+          default: erc721
+          enum:
+          - erc721
+          - erc1155
     Event:
       type: object
       properties:
@@ -124,21 +124,6 @@ components:
         created_at:
           type: string
           default: 1654983000
-    TokenLite:
-      type: object
-      properties:
-        contract:
-          type: string
-          default: '0xef1a89cbfabe59397ffda11fc5df293e9bc5db90'
-        token_id:
-          type: integer
-          default: 1
-        erc_type:
-          type: string
-          default: erc721
-          enum:
-          - erc721
-          - erc1155
     Order:
       type: object
       properties:
@@ -180,6 +165,21 @@ components:
           default: 1654999000
       required:
       - type
+    EventResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          default: true
+        next:
+          type: string
+          default: null
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+      required:
+      - success
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
