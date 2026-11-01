@@ -64,45 +64,118 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-X2Y2 was an NFT marketplace and trading platform on Ethereum offering one of the lowest marketplace fees (0.5%) in the industry. It provided REST APIs and a JavaScript SDK enabling developers to build analytics tools, trading bots, and web3 applications on top of its marketplace infrastructure.
+X2Y2 is an NFT marketplace and trading platform on Ethereum offering REST APIs for querying listings, offers, sales history, collection statistics, and executing NFT trades. It provides one of the lowest marketplace fees in the industry at 0.5% and includes an NFT-backed lending (Fi) API suite alongside its core marketplace API.
 
-## API
+**Areas:** NFT · Ethereum · Marketplace · Blockchain · Web3 · Collectibles · Trading
 
-The X2Y2 API is organized into two suites:
+## X2Y2 on APIs.io
 
-**X2Y2 OpenAPI** — marketplace data and order management:
-- `GET /v1/orders` — fetch open listings/orders
-- `POST /v1/orders` — create a new order/listing
-- `GET /v1/events` — fetch marketplace events (sales, transfers)
-- `GET /v1/offers` — fetch open offers
-- `GET /v1/contracts/{contract}` — fetch collection/contract info
-- `GET /v1/contracts/{contract}/stats` — fetch collection statistics
+Everything profiled for X2Y2 is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/x2y2/](https://apis.io/providers/x2y2/)** — or go straight to one of the APIs or properties below.
 
-**X2Y2 Fi API** — NFT-backed lending and finance:
-- `GET /system/option` — get system parameters
-- Loan creation, repayment, and refinancing endpoints
-- Offer creation and management endpoints
+### APIs (8)
 
-## Authentication
+- [X2Y2 Chain API](https://apis.io/apis/x2y2/x2y2-chain-api/) — The Chain API from X2Y2 — 4 operation(s) for chain.
+- [X2Y2 Contracts API](https://apis.io/apis/x2y2/x2y2-contracts-api/) — The Contracts API from X2Y2 — 2 operation(s) for contracts.
+- [X2Y2 Events API](https://apis.io/apis/x2y2/x2y2-events-api/) — The Events API from X2Y2 — 1 operation(s) for events.
+- [X2Y2 General API](https://apis.io/apis/x2y2/x2y2-general-api/) — The General API from X2Y2 — 1 operation(s) for general.
+- [X2Y2 Loan API](https://apis.io/apis/x2y2/x2y2-loan-api/) — The Loan API from X2Y2 — 1 operation(s) for loan.
+- [X2Y2 Offer API](https://apis.io/apis/x2y2/x2y2-offer-api/) — The Offer API from X2Y2 — 4 operation(s) for offer.
+- [X2Y2 Offers API](https://apis.io/apis/x2y2/x2y2-offers-api/) — The Offers API from X2Y2 — 1 operation(s) for offers.
+- [X2Y2 Orders API](https://apis.io/apis/x2y2/x2y2-orders-api/) — The Orders API from X2Y2 — 4 operation(s) for orders.
 
-All endpoints require an API key. Keys are requested through the X2Y2 Developer Hub (Discord). The API was in beta with no published rate limit thresholds; error code `1002` indicates rate limit exceeded.
+### Published properties
 
-## Base URLs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Mainnet: `https://api.x2y2.org/`
-- Goerli Testnet: `https://goerli-api.x2y2.org/` (deprecated)
+#### Agentic access (1)
 
-## SDK
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- npm: `@x2y2-io/sdk`
-- GitHub: [X2Y2-io/x2y2-sdk](https://github.com/X2Y2-io/x2y2-sdk)
+- [X2Y2 Agentic Access](https://apis.io/agentic-access/x2y2/x2y2-agentic-access/)
 
-## Status
+#### JSON-LD (1)
 
-X2Y2 shut down its NFT marketplace on April 30, 2025. Ethereum smart contracts remain deployed and operational.
+Linked-data contexts for the provider's vocabulary.
 
-## Links
+- [Apis Context](https://apis.io/jsonld/x2y2/apis/)
 
-- Developer Docs: https://docs.x2y2.io/developers/api
-- API Reference: https://x2y2.readme.io/reference/introduction
-- GitHub: https://github.com/X2Y2-io
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [X2Y2 Fi Chain API](https://apis.io/collections/x2y2/open-x2y2-chain-api/)
+- [X2Y2 Fi Chain Contracts API](https://apis.io/collections/x2y2/open-x2y2-contracts-api/)
+- [X2Y2 Fi Chain Events API](https://apis.io/collections/x2y2/open-x2y2-events-api/)
+- [X2Y2 Fi Chain General API](https://apis.io/collections/x2y2/open-x2y2-general-api/)
+- [X2Y2 Fi Chain Loan API](https://apis.io/collections/x2y2/open-x2y2-loan-api/)
+- [X2Y2 Fi Chain Offer API](https://apis.io/collections/x2y2/open-x2y2-offer-api/)
+- [X2Y2 Fi Chain Offers API](https://apis.io/collections/x2y2/open-x2y2-offers-api/)
+- [X2Y2 Fi Chain Orders API](https://apis.io/collections/x2y2/open-x2y2-orders-api/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [X2Y2 Authentication](https://apis.io/security/x2y2/x2y2-authentication/)
+- [X2Y2 Domain Security](https://apis.io/security/x2y2/x2y2-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://x2y2.io)
+- [Documentation](https://docs.x2y2.io/developers/api)
+- [API reference](https://x2y2.readme.io/reference/introduction)
+
+## API Evangelist rating
+
+**Kin Score 26.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 50.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 0.0 |
+
+**Agent readiness 24.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.7** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/x2y2/](https://apis.io/providers/x2y2/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for X2Y2: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/x2y2/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
